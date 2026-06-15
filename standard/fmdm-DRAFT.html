@@ -149,7 +149,17 @@ body {
 <li><a href="#_schema_representation">5.4. Schema representation</a></li>
 </ul>
 </li>
-<li><a href="#_introduction">6. Introduction</a></li>
+<li><a href="#_overview_informative">6. Overview (informative)</a>
+<ul class="sectlevel2">
+<li><a href="#_background">6.1. Background</a></li>
+<li><a href="#_solution_overview">6.2. Solution overview</a>
+<ul class="sectlevel3">
+<li><a href="#_message_flow">6.2.1. Message flow</a></li>
+<li><a href="#_conformance_class_summary">6.2.2. Conformance class summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#_data_model">7. Data Model</a>
 <ul class="sectlevel2">
 <li><a href="#_requirements_class_data_model">7.1. Requirements Class "Data Model"</a>
@@ -462,10 +472,71 @@ body {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>6. Introduction</h2>
+<h2 id="_overview_informative"><a class="anchor" href="#_overview_informative"></a>6. Overview (informative)</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_background"><a class="anchor" href="#_background"></a>6.1. Background</h3>
 <div class="paragraph">
-<p>TODO</p>
+<p>In February 2024, a WMO workshop in Geneva brought together representatives from WMO and the Hydro-Meteorological and Environmental Industry (HMEI) to address the lack of standardization in first-mile data collection. While international data exchange is standardized through WMO, no equivalent standardization exists for the first-mile segment, the connection between field equipment and centralized data collection systems, leading to a proliferation of incompatible proprietary formats and significant integration effort for operators of observing networks. The workshop recommended focusing first on output interoperability, and the Standing Committee on Information Management and Technology (SC-IMT) subsequently established the Task Team on First-mile Data Collection Standardization (TT-1M) to produce this specification.</p>
+</div>
+<div class="paragraph">
+<p>[TODO] Add data flow figure showing 1st mile, DCPS and WIS2.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_solution_overview"><a class="anchor" href="#_solution_overview"></a>6.2. Solution overview</h3>
+<div class="paragraph">
+<p>The first-mile segment covers the connection between field equipment and the systems that collect and process observations. In this specification, the field equipment is represented as the Node and the receiving system as the Hub. Communication is strictly unidirectional, with the Node transmitting protobuf payloads over MQTT to the Hub. The Node represents the remote station or logger through a Node Device and may describe attached sensors as Observer Device entries, as illustrated in <a href="#fig-node-hub">Figure 1</a>. The two top-level payloads are the <code>data</code> message, which carries Observation content, and the <code>metadata</code> message, which carries the descriptive context needed to interpret those observations. Detailed message structure is described in Clause 7, standard name binding in Clause 8, and MQTT protocol binding in Clause 9.</p>
+</div>
+<div id="fig-node-hub" class="imageblock">
+<div class="content">
+<img src="../images/firstmile-archi.drawio.png" alt="Node and Hub architecture">
+</div>
+<div class="title">Figure 1. Node and Hub architecture</div>
+</div>
+<div class="sect3">
+<h4 id="_message_flow"><a class="anchor" href="#_message_flow"></a>6.2.1. Message flow</h4>
+<div class="paragraph">
+<p>In typical operation, the <code>metadata</code> message is sent when the Node is initialized and whenever the station configuration changes, and the <code>data</code> message is sent as observations become available. This separates relatively stable descriptive information from frequently changing measurement values and supports both individual and batched Observation delivery. Where a measurement is unavailable, the value is represented explicitly using <code>emptyValue</code> rather than being inferred from zero or omission.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_conformance_class_summary"><a class="anchor" href="#_conformance_class_summary"></a>6.2.2. Conformance class summary</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 71.4286%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Conformance class</th>
+<th class="tableblock halign-left valign-top" style="background-color: #FFFFFF;">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Core Data Model</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Covers the protobuf structure and semantics of the <code>data</code> message, <code>metadata</code> message, Observation content, devices, Parameter Definition content, and explicit missing values.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Standard Name Binding</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Covers how Parameter Definition entries associate parameters with controlled standard-name vocabularies and namespaces.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">MQTT Protocol Binding</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Covers how protobuf payloads are conveyed over MQTT in the unidirectional exchange between Node and Hub.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Node</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Covers the sender-side behavior for constructing and publishing <code>metadata</code> message and <code>data</code> message payloads.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Hub</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><p class="tableblock">Covers the receiver-side behavior for accepting, decoding, and interpreting payloads received from the Node.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -1843,7 +1914,7 @@ The choice of reference surface is determined by the user based on the measureme
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-06-15 19:54:31 UTC
+Last updated 2026-06-15 19:58:49 UTC
 </div>
 </div>
 </body>

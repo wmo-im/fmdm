@@ -1,0 +1,51 @@
+[[req_data-model-value]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/data-model/value*
+^|A |
+
+A Value message SHALL be defined using one of the following data types:
+
+[cols="2,2,5"]
+!===
+!Field !Type !Description
+
+!floatValue
+!float
+!32-bit floating point number
+
+!doubleValue
+!double
+!64-bit floating point number
+
+!intValue
+!int32
+!32-bit signed integer
+
+!unsignedIntValue
+!uint32
+!32-bit unsigned integer
+
+!int64Value
+!int64
+!64-bit signed integer
+
+!unsignedInt64Value
+!uint64
+!64-bit unsigned integer
+
+!stringValue
+!string
+!Text string value
+
+!boolValue
+!bool
+!Boolean true/false value
+
+!emptyValue
+!google.protobuf.Empty
+!Indicates missing or unavailable data
+
+!===
+
+|===

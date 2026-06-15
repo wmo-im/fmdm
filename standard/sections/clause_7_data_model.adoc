@@ -61,3 +61,21 @@ include::../requirements/data-model/REQ_parameter.adoc[]
 A DeviceRef message describes a reference to an ObserverDevice message.
 
 include::../requirements/data-model/REQ_device_ref.adoc[]
+
+==== Data
+
+A Data message provides the observations provided at a Node.
+
+include::../requirements/data-model/REQ_data.adoc[]
+
+==== Observation
+
+An Observation message defines the values associated with parameter definitions provided at a Node.
+
+include::../requirements/data-model/REQ_observation.adoc[]
+
+==== Value
+
+A Value message defines the measurement of data of different types.
+
+include::../requirements/data-model/REQ_value.adoc[]

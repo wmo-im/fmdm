@@ -2,7 +2,7 @@
 [width="90%",cols="2,6a"]
 |===
 ^|*Requirement {counter:req-id}* |*/req/data-model/node*
-^|A |A Node message SHALL define a ``name`` element.
+^|A |A Node message SHALL define a ``name`` element describing the name or model designation of the Node device.
 |===
 
 // TODO: should a Node have an id?  If yes, then refactor with ObserverDevice

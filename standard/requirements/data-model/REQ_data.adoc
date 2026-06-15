@@ -2,5 +2,5 @@
 [width="90%",cols="2,6a"]
 |===
 ^|*Requirement {counter:req-id}* |*/req/data-model/data*
-^|A | A Data message SHALL define one of more ``observations`` elements using an Observation message.
+^|A | A Data message SHALL define one of more ``observations`` elements to describe observation measurements.
 |===

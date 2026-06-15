@@ -48,4 +48,6 @@ A Value message SHALL be defined using one of the following data types:
 
 !===
 
+^|B | When a measurement value is unavailable due to sensor malfunction, communication error, or other causes, the value SHALL be represented using the emptyValue field of ``type google.protobuf.Empty``.
+
 |===

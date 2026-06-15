@@ -2,5 +2,6 @@
 [width="90%",cols="2,6a"]
 |===
 ^|*Recommendation {counter:rec-id}* |*/rec/data-model/node*
-^|A |A Node message SHOULD define a ``location`` element using the Location message.
+^|A |A Node message ``name`` SHOULD contain a human-readable identification of the device, such as its model name or type designation.
+^|B |A Node message SHOULD define a ``location`` element to describe the geographic location of the Node device.
 |===

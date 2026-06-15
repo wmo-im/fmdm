@@ -1,6 +1,13 @@
 == Data Model
 
-TODO one sentence
+The data model defines the structure and organization of information transmitted from the Node to the Host using Protocol Buffers (Protobuf) as the Data Format. The data model is formally specified in the protobuf schema firstmile.proto.
+
+The data model supports two primary use cases:
+
+- Transmission of observation data: The Node transmits measurement values collected from sensors
+- Transmission of metadata: The Node transmits information about the monitoring site, devices, and parameter definitions
+
+These use cases are supported by two top-level message types: the Data message containing observations, and the Metadata message containing configuration and contextual information. Both messages are defined in a single protobuf schema and transmitted as independent payloads over MQTT. The Metadata message provides the necessary context for interpreting the Data message, including descriptions of devices and parameters.
 
 === Requirements Class "Data Model"
 
@@ -8,7 +15,28 @@ TODO one sentence
 
 This Requirements Class provides requirements for the Data Model.
 
+The data model organizes information hierarchically as follows:
+
+- **Messages**: Top-level containers (Data and Metadata) that are transmitted as independent payloads
+- **Devices**: Descriptions of physical equipment including the Node Device (node) and Observer Devices (sensors)
+- **Observations**: Measurement data points consisting of a parameter identifier, timestamp, and one or more values
+- **Parameter definitions**: Metadata describing what is being measured, including units, aggregation methods, and standard name mappings. Parameter definitions also describe how observations are structured in Data messages.
+- **Values**: The actual measurement data, supporting multiple numeric types, strings, booleans, and explicit representation of missing data
+
+Each Observation references a ParameterDefinition by identifier. Each ParameterDefinition contains one or more Parameter specifications that describe the measured variable, its unit, temporal aggregation method, and which device performs the measurement.
+
 include::../requirements/requirements_class_data-model.adoc[]
+
+==== Design principles
+
+The data model is designed according to the following principles:
+
+- **Efficiency**: Optimized for bandwidth-constrained environments but focusing on IP communication rather than extremely low-level binary formats
+- **Extensibility**: Support for multiple value types and flexible parameter definitions
+- **Self-description**: Metadata provides complete context for interpreting observations
+- **Explicit missing values**: Clear distinction between unavailable data and zero/false measurements
+- **Batch transmission**: Multiple observations may be included in a single Data message
+- **Standard name interoperability**: Mapping to external naming conventions through namespace definitions
 
 ==== FirstMileMessage
 
@@ -18,19 +46,21 @@ include::../requirements/data-model/REQ_first_mile_message.adoc[]
 
 ==== Location
 
-A Location message defines the geospatial location of a given ObserverDevice or Node.
+The Location message specifies the geographic position of a device (either Node or Observer).
 
 include::../requirements/data-model/REQ_location.adoc[]
+include::../recommendations/data-model/REC_location.adoc[]
+include::../recommendations/data-model/PER_location.adoc[]
 
 ==== Metadata
 
-A Metadata message defines the observers and parameters defined at a given Node.  It also defines a namespace map for parameter definitions using existing controlled vocabularies.
+A Metadata message provides configuration and contextual information about the Node, including descriptions of devices and the parameters they measure. This message shall be transmitted at least once after Node initialization and whenever the configuration changes.
 
 include::../requirements/data-model/REQ_metadata.adoc[]
 
 ==== Metadata.Node
 
-A Node message describes the devices defines the data capture and transmits the data.
+A Node message describes the Node device itself, typically a datalogger or observation station.
 
 include::../requirements/data-model/REQ_node.adoc[]
 include::../recommendations/data-model/REC_node.adoc[]
@@ -38,21 +68,29 @@ include::../recommendations/data-model/PER_node.adoc[]
 
 ==== Metadata.ObserverDevice
 
-An ObserverDevice message describes individual devices connected to Node.
+An ObserverDevice message describes an individual sensor or measurement device connected to the Node Device.
 
 include::../requirements/data-model/REQ_observer_device.adoc[]
 include::../recommendations/data-model/REC_observer_device.adoc[]
 include::../recommendations/data-model/PER_observer_device.adoc[]
 
+IMPORTANT: Observer device identifiers shall remain stable across Node restarts and metadata updates to ensure consistent parameter-to-device associations.
+
 ==== Metadata.ParameterDefinition
 
-A ParameterDefinition message describes a set of variables or measurement types.
+A ParameterDefinition groups one or more related measurement parameters that share common context. Each parameter definition has a unique identifier that is referenced by observations. Parameters are typically grouped when they are measured at the same timestamp, allowing multiple values to share a single timestamp in observations and thus reducing payload size.
+
+The parameters field contains one or more Parameter messages describing individual measurable variables. When multiple parameters are grouped in a single definition, each observation referencing this definition shall provide values in the same order as the parameters are defined.
 
 include::../requirements/data-model/REQ_parameter_definition.adoc[]
 
 ==== Metadata.ParameterDefinition.Parameter
 
-A Parameter message describes single variable or measurement type.
+The Parameter message specifies a single measurable variable, including its name, unit of measurement, aggregation method, and associated device.
+
+The standardNames field enables mapping to external naming conventions such as Climate and Forecast (CF) standard names. This allows parameters to be referenced by different standard parameter types according to the target application of the device using the protocol. The Node is not bound to a specific standard but may include mappings to multiple standards as appropriate for the intended use case. The keys in this map shall correspond to namespace prefixes defined in Metadata namespaces.
+
+The device field specifies which device (either the node or a specific observer) performs this measurement.
 
 include::../requirements/data-model/REQ_parameter.adoc[]
 
@@ -64,18 +102,49 @@ include::../requirements/data-model/REQ_device_ref.adoc[]
 
 ==== Data
 
-A Data message provides the observations provided at a Node.
+The Data message is the primary container for transmitting observation data from the Node to the Host. This message may be transmitted as frequently as needed to deliver current or batched observations.
+
+A Data message may contain multiple Observation messages, enabling efficient batch transmission of measurement data. Each observation is independent and contains its own timestamp and parameter reference.
+
+NOTE: The Node may transmit Data messages containing observations that reference parameter definitions not yet received by the Host. In this case, the Host shall buffer or queue such observations until the corresponding Metadata message is received.
 
 include::../requirements/data-model/REQ_data.adoc[]
 
 ==== Observation
 
-An Observation message defines the values associated with parameter definitions provided at a Node.
+The Observation message represents a single measurement data point collected at a specific time.
 
 include::../requirements/data-model/REQ_observation.adoc[]
+
+NOTE: The ``parameterDefinitionId`` element shall reference a ParameterDefinition ``id`` from the Metadata message. The number and type of values in the values field shall correspond to the number of parameters defined in the referenced ParameterDefinition.
+
+NOTE: The time field uses the ``google.protobuf.Timestamp`` format, representing time as seconds and nanoseconds since the Unix epoch (``1970-01-01T00:00:00Z``).
+
+NOTE: An observation may contain multiple values when the referenced ParameterDefinition contains multiple parameters. This approach enables grouping values that are measured at the same timestamp, requiring the timestamp to be transmitted only once for multiple values. This reduces payload size, which is particularly beneficial in bandwidth-constrained environments.  For example, a parameter definition for "Internal Parameters" might include both supply voltage and internal temperature, requiring two values per observation but sharing a single timestamp.
 
 ==== Value
 
 A Value message defines the measurement of data of different types.
 
 include::../requirements/data-model/REQ_value.adoc[]
+
+The choice of value type should be appropriate for the parameter being measured. Numeric measurements typically use doubleValue or floatValue, while categorical observations may use stringValue. Boolean parameters (such as alarm states) use boolValue.
+
+NOTE: The stringValue field is intended for text data only and shall NOT be used to transmit:
+   - binary data, including base64-encoded binary blobs
+   - serialized objects or data structures
+   - structured data formats such as JSON, XML, or similar encodings
+
+NOTE: Binary data transmission and complex structured data are outside the scope of this standard.
+
+NOTE: Missing or unavailable measurement values shall NOT be represented as:
+   - numeric zero (0)
+   - NaN (Not a Number)
+   - omission from the values array
+   - any other numeric sentinel value
+
+NOTE: The emptyValue field shall be used to explicitly and unambiguously indicate missing data.
+
+This approach ensures clear distinction between actual measurements of zero and missing measurements, which is critical for correct data interpretation.
+
+When an Observation references a ParameterDefinition containing multiple parameters, the values in the values array shall be provided in the same order as the parameters are defined in the ParameterDefinition.parameters field. It is not permitted to omit a value from the middle of the array, as this would cause misalignment with the parameter definitions. If a value is unavailable, the emptyValue field shall be used at that position to maintain correct alignment.

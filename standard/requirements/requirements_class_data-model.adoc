@@ -3,7 +3,7 @@
 |===
 2+|*Requirements Class*
 2+|http://wis.wmo.int/spec/fmdm/1/req/data-model
-|Target type |Event metadata
+|Target type |Message encoding
 |Dependency |<<protobuf, Protobuf>>
 |Pre-conditions |The event message conforms to the Protobuf specification.
 |===

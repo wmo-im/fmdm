@@ -3,5 +3,5 @@
 |===
 ^|*Requirement {counter:req-id}* |*/req/data-model/observer_device*
 ^|A |An ObserverDevice message SHALL define an ``id`` element.
-^|B |A ObserverDevice message SHALL define a ``name`` element.
+^|B |A ObserverDevice message SHALL define a ``name`` element to describe the name or model designation of the observer device.
 |===

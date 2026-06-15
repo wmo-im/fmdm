@@ -3,6 +3,6 @@
 |===
 ^|*Requirement {counter:req-id}* |*/req/data-model/observation*
 ^|A | An Observation message SHALL define a ``parameterDefinitionId`` element using the id of the ParameterDefinition message.
-^|B | An Observation message SHALL define a ``time`` element using ``google.protobuf.Timestamp``.
+^|B | An Observation message SHALL define a ``time`` element using ``google.protobuf.Timestamp``, in UTC.
 ^|C | An Observation message SHALL define one to many ``values`` elements using the Value message.
 |===

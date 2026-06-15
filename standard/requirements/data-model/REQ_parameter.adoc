@@ -2,10 +2,12 @@
 [width="90%",cols="2,6a"]
 |===
 ^|*Requirement {counter:req-id}* |*/req/data-model/parameter*
-^|A |A Parameter message SHALL define a ``longName`` element.
+^|A |A Parameter message SHALL define a ``longName`` element describing the name of the parameter (e.g., "Air Temperature", "Wind Speed").
 ^|B |A Parameter message SHALL define a ``unit`` element using the https://codes.wmo.int/common/unit[WMO Register: Code Table C-6: List of units for TDCFs]. // TODO verify
-^|C |A Parameter message SHALL define a ``standardNames`` map which describes one to many namespace prefix and URI for the equivalent parameter name in an external vocabulary.
-^|D |A Parameter message SHALL define a ``device`` element using a DeviceRef message.
-^|E |A Parameter message SHALL define a ``cellMethod`` element using a CellMethod enumeration.
-^|F |A Parameter message SHALL define a ``cellPeriodSeconds`` element.
+^|C |A Parameter message SHALL define a ``standardNames`` map which describes one to many namespace prefix and URI maps for the equivalent parameter name in an external vocabulary.
+^|D |A Parameter message SHALL define a ``device`` element describing the device (Node or Observer) that measures this parameter.
+^|E |A Parameter message SHALL define a ``cellMethod`` element descriving the statistical or aggregation method applied to the measurement.
+^|F |A Parameter message SHALL define a ``cellPeriodSeconds`` element describing the period of aggregation in seconds (0 for instantaneous point measurements).
+^|G |When cellMethod is ``POINT``, the value SHALL be 0, indicating an instantaneous measurement.  For all other cell methods, the value SHALL be greater than 0, indicating the duration of the aggregation period. For example: * A 30-second mean temperature would have a ``cellMethod`` value of ``MEAN`` and a ``cellPeriodSeconds`` value of 30.  An instantaneous wind direction would have a ``cellMethod`` value of ``POINT``l and a ``cellPeriodSeconds`` value of 0. A 5-minute maximum wind gust would have a ``cellMethod`` of ``MAXIMUM`` and a ``cellPeriodSeconds`` value of 300.
+^|H |When multiple parameters are grouped in a single definition, each observation referencing this definition SHALL provide values in the same order as the parameters are defined.
 |===

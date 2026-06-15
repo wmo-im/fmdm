@@ -2,5 +2,5 @@
 [width="90%",cols="2,6a"]
 |===
 ^|*Recommendation {counter:rec-id}* |*/rec/data-model/observer_device*
-^|A |An ObserverDevice message SHOULD define a ``location`` element using the Location message.
+^|A |An ObserverDevice message SHOULD define a ``location`` element describing the geographic location of the observer device.
 |===

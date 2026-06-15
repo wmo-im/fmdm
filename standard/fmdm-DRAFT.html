@@ -163,6 +163,9 @@ body {
 <li><a href="#_metadata_parameterdefinition">7.1.7. Metadata.ParameterDefinition</a></li>
 <li><a href="#_metadata_parameterdefinition_parameter">7.1.8. Metadata.ParameterDefinition.Parameter</a></li>
 <li><a href="#_metadata_parameterdefinition_parameter_deviceref">7.1.9. Metadata.ParameterDefinition.Parameter.DeviceRef</a></li>
+<li><a href="#_data">7.1.10. Data</a></li>
+<li><a href="#_observation_2">7.1.11. Observation</a></li>
+<li><a href="#_value">7.1.12. Value</a></li>
 </ul>
 </li>
 </ul>
@@ -895,6 +898,157 @@ body {
 </tbody>
 </table>
 </div>
+<div class="sect3">
+<h4 id="_data"><a class="anchor" href="#_data"></a>7.1.10. Data</h4>
+<div class="paragraph">
+<p>A Data message provides the observations provided at a Node.</p>
+</div>
+<table id="req_data-model-data" class="tableblock frame-all grid-all" style="width: 90%;">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong>Requirement 9</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><div class="content"><div class="paragraph">
+<p><strong>/req/data-model/data</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><div class="content"><div class="paragraph">
+<p>A Data message SHALL define one of more <code>observations</code> elements using an Observation message.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_observation_2"><a class="anchor" href="#_observation_2"></a>7.1.11. Observation</h4>
+<div class="paragraph">
+<p>An Observation message defines the values associated with parameter definitions provided at a Node.</p>
+</div>
+<table id="req_data-model-observation" class="tableblock frame-all grid-all" style="width: 90%;">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong>Requirement 10</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><div class="content"><div class="paragraph">
+<p><strong>/req/data-model/observation</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><div class="content"><div class="paragraph">
+<p>An Observation message SHALL define a <code>parameterDefinitionId</code> element using the id of the ParameterDefinition message.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock">B</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><div class="content"><div class="paragraph">
+<p>An Observation message SHALL define a <code>time</code> element using <code>google.protobuf.Timestamp</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock">C</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><div class="content"><div class="paragraph">
+<p>An Observation message SHALL define one to many <code>values</code> elements using the Value message.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_value"><a class="anchor" href="#_value"></a>7.1.12. Value</h4>
+<div class="paragraph">
+<p>A Value message defines the measurement of data of different types.</p>
+</div>
+<table id="req_data-model-value" class="tableblock frame-all grid-all" style="width: 90%;">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock"><strong>Requirement 11</strong></p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><div class="content"><div class="paragraph">
+<p><strong>/req/data-model/value</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: #FFFFFF;"><p class="tableblock">A</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: #FFFFFF;"><div class="content"><div class="paragraph">
+<p>A Value message SHALL be defined using one of the following data types:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 22.2222%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">floatValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">float</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit floating point number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">doubleValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">double</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit floating point number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">intValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit signed integer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unsignedIntValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uint32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32-bit unsigned integer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int64Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit signed integer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unsignedInt64Value</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uint64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64-bit unsigned integer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stringValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text string value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bool</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean true/false value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">emptyValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">google.protobuf.Empty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates missing or unavailable data</p></td>
+</tr>
+</tbody>
+</table></div></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -1374,7 +1528,7 @@ message FirstMileMessage {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-06-15 18:21:14 UTC
+Last updated 2026-06-15 18:47:49 UTC
 </div>
 </div>
 </body>

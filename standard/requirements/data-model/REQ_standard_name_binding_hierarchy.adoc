@@ -8,11 +8,11 @@
 * Level 2: WMO First Mile parameter registry
 * Level 3: Locally managed vocabularies
 
-^|C |The CF namespace prefix SHALL be declared using the value ``cf``.
-^|D |The CF namespace URI value SHALL be a URI that resolves to a machine-readable vocabulary server endpoint publishing the CF standard name table.
-^|E |The WMO First Mile registry namespace prefix SHALL be declared using the value ``wmo``.
-^|F |Locally managed vocabularies SHALL conform to the FAIR Guiding Principles for scientific data management (Findable, Accessible, Interoperable, Reusable). In particular:
-^|G |The vocabulary SHALL be findable via a persistent, unique identifier (the namespace URI).
-^|H |The vocabulary SHALL be accessible at that URI to all parties participating in the data exchange.
-^|I |The vocabulary SHALL use an open, standardised representation (e.g., SKOS/RDF).
+^|B |The CF namespace prefix SHALL be declared using the value ``cf``.
+^|C |The CF namespace URI value SHALL be a URI that resolves to a machine-readable vocabulary server endpoint publishing the CF standard name table.
+^|D |The WMO First Mile registry namespace prefix SHALL be declared using the value ``wmo``.
+^|E |Locally managed vocabularies SHALL conform to the FAIR Guiding Principles for scientific data management (Findable, Accessible, Interoperable, Reusable). In particular:
+^|F |The vocabulary SHALL be findable via a persistent, unique identifier (the namespace URI).
+^|G |The vocabulary SHALL be accessible at that URI to all parties participating in the data exchange.
+^|H |The vocabulary SHALL use an open, standardised representation (e.g., SKOS/RDF).
 |===

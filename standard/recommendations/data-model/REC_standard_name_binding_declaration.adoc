@@ -2,5 +2,5 @@
 [width="90%",cols="2,6a"]
 |===
 ^|*Recommendation {counter:rec-id}* |*/rec/data-model/standard_name_binding_declaration*
-^|A |For CF conventions, the namespace URI value should be set to the NERC Vocabulary Server mirror of the CF standard name table (collection P07) should be used (``https://vocab.nerc.ac.uk/collection/P07/current``).
+^|A |For CF conventions, the namespace URI value SHOULD be set to the NERC Vocabulary Server mirror of the CF standard name table (collection P07): ``https://vocab.nerc.ac.uk/collection/P07/current``.
 |===

@@ -105,7 +105,7 @@ The binding mechanism uses two related fields in the data model:
 - Metadata ``namespaces``: declares the naming convention vocabularies in use, associating a short namespace key with a URI that identifies the vocabulary
 - Parameter ``standardNames``: associates each namespace key with the corresponding standard name for the parameter within that vocabulary
 
-Standard name binding follows a three-level hierarchy of vocabularies, described in Standard name hierarchy. The use of standard names is optional but recommended where machine-to-machine interoperability is required. A Node may bind a single parameter to standard names from multiple vocabularies simultaneously.
+Standard name binding follows a three-level hierarchy of vocabularies, described in xref:standard-name-hierarchy[]. The use of standard names is optional but recommended where machine-to-machine interoperability is required. A Node may bind a single parameter to standard names from multiple vocabularies simultaneously.
 
 ===== Metadata namespace declaration
 
@@ -126,6 +126,7 @@ include::../recommendations/data-model/PER_standard_name_binding_assignment.adoc
 
 NOTE: Standard name binding is applied in the Parameter message (not the ParameterDefinition message). When a ParameterDefinition message contains multiple Parameter messages, each parameter independently carries its own standard name bindings appropriate for the variable it represents.
 
+[[standard-name-hierarchy]]
 ===== Standard name hierarchy
 
 Standard names are defined at three levels:
@@ -148,7 +149,7 @@ NOTE: Parameters that may require Level 2 registry entries include quantities ty
 
 NOTE: A conformant Hub should be capable of resolving namespace URIs as configured for the deployment, including URIs accessible only within a private or organisational network. A conformant Node shall use namespace URIs that are resolvable by the Hub within the operational context of the deployment.
 
-IMPORTANT: Where a standard name exists at Level 1 or Level 2, that standard name is be included in the Parameter message ``standardNames`` element. Any locally managed entries for the same parameter are supplementary to, not a replacement for, the applicable standard name.
+IMPORTANT: Where a standard name exists at Level 1 or Level 2, that standard name is to be included in the Parameter message ``standardNames`` element. Any locally managed entries for the same parameter are supplementary to, not a replacement for, the applicable standard name. // TODO consider making a requirement (but note this is untestable)
 
 ==== Metadata.ParameterDefinition.Parameter.DeviceRef
 

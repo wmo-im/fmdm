@@ -1,0 +1,8 @@
+[[rec_data-model-standard_name_binding_hierarchy]]
+[width="90%",cols="2,6a"]
+|===
+^|*Recommendation {counter:rec-id}* |*/rec/data-model/standard_name_binding_hierarchy*
+^|A |The highest vocabulary SHOULD be used when it provides a suitable standard name for a given parameter.
+^|B |Where a CF standard name exists for a parameter, the Node SHOULD use it in preference to any lower-level vocabulary entry.
+^|C |Where a parameter is not covered by CF but is included in the WMO First Mile parameter registry, the Node SHOULD use the registry entry in preference to any locally managed vocabulary.
+|===

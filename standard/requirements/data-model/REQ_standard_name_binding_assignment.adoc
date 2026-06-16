@@ -1,0 +1,7 @@
+[[req_data-model-standard_name_binding_assignment]]
+[width="90%",cols="2,6a"]
+|===
+^|*Requirement {counter:req-id}* |*/req/data-model/standard_name_binding_assignment*
+^|A |A Node SHALL NOT include a standard name entry for a namespace that is not declared in the corresponding Metadata message.
+^|B |Each namespace key SHALL have a corresponding key in the Metadata message ``namespaces`` set of keys.
+|===

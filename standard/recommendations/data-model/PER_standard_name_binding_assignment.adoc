@@ -1,0 +1,6 @@
+[[per_data-model-standard_name_binding_assignment]]
+[width="90%",cols="2,6a"]
+|===
+^|*Permission {counter:per-id}* |*/per/data-model/standard_name_binding_assignment*
+^|A |A parameter MAY carry zero or more standard name entries.
+|===

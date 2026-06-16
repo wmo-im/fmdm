@@ -1,0 +1,11 @@
+[[ats_message-encoding]]
+====
+[%metadata]
+label:: http://wis.wmo.int/spec/fmdm/1/req/message-encoding
+subject:: Requirements Class "Message Encoding"
+classification:: Target Type:Encoding
+====
+
+==== Encoding
+
+include::./message-encoding/ATS_test_encoding.adoc[]

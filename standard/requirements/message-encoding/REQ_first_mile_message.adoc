@@ -1,7 +1,7 @@
-[[req_data-model-first_mile_message]]
+[[req_message-encoding-first_mile_message]]
 [width="90%",cols="2,6a"]
 |===
-^|*Requirement {counter:req-id}* |*/req/data-model/first_mile_message*
+^|*Requirement {counter:req-id}* |*/req/message-encoding/first_mile_message*
 ^|A |A FirstMileMessage message SHALL be used as the root definition of a message.
 ^|B |A FirstMileMessage message SHALL declare ``data`` or ``metadata``.
 |===

@@ -2,4 +2,4 @@
 
 This document defines the encoding and transmission of observation data from remote monitoring stations (Nodes) to a central data collection system (Hub).
 
-This specification defines the conformance requirements for WMO First Mile Data Management (data model, encoding, transmission).  Annex A defines the abstract test suite.
+This specification defines the conformance requirements for WMO First Mile Data Management (message encoding, parameter standard names, transmission).  Annex A defines the abstract test suite.

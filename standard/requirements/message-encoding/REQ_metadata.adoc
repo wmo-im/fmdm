@@ -1,7 +1,7 @@
-[[req_data-model-metadata]]
+[[req_message-encoding-metadata]]
 [width="90%",cols="2,6a"]
 |===
-^|*Requirement {counter:req-id}* |*/req/data-model/metadata*
+^|*Requirement {counter:req-id}* |*/req/message-encoding/metadata*
 ^|A | A Metadata message SHALL define a ``node`` element to describe the Node device (datalogger or station).
 ^|B | A Metadata message SHALL define zero or more ``observers`` to describe individual sensor devices connected to the Node.
 ^|C | A Metadata message SHALL define one or more ``parameterDefinitions`` to define the parameters used in observations.

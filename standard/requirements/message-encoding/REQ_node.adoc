@@ -1,7 +1,7 @@
-[[req_data-model-node]]
+[[req_message-encoding-node]]
 [width="90%",cols="2,6a"]
 |===
-^|*Requirement {counter:req-id}* |*/req/data-model/node*
+^|*Requirement {counter:req-id}* |*/req/message-encoding/node*
 ^|A |A Node message SHALL define a ``name`` element describing the name or model designation of the Node device.
 |===
 

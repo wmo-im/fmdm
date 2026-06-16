@@ -1,7 +1,7 @@
-[[per_data-model-observer_device]]
+[[per_message-encoding-observer_device]]
 [width="90%",cols="2,6a"]
 |===
-^|*Permission {counter:per-id}* |*/per/data-model/observer_device*
+^|*Permission {counter:per-id}* |*/per/message-encoding/observer_device*
 ^|A |An ObserverDevice message MAY define a ``url`` element providing a URI reference to additional metadata about the device.
 ^|B |An ObserverDevice message MAY define a ``serialNumber`` element describing manufacturer's serial number of the device.
 ^|C |An ObserverDevice message MAY define a ``firmwareVersion`` element describing firmware version of the device.

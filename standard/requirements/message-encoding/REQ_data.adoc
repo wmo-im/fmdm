@@ -1,6 +1,6 @@
-[[req_data-model-data]]
+[[req_message-encoding-data]]
 [width="90%",cols="2,6a"]
 |===
-^|*Requirement {counter:req-id}* |*/req/data-model/data*
+^|*Requirement {counter:req-id}* |*/req/message-encoding/data*
 ^|A | A Data message SHALL define one or more ``observations`` elements to describe observation measurements.
 |===

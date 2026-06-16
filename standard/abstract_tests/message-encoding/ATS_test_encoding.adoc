@@ -1,8 +1,8 @@
-[[ats_transmission-encoding]]
+[[ats_message-encoding-encoding]]
 ====
 [%metadata]
-label:: /conf/transmission/encoding
-subject:: /req/transmission/encoding
+label:: /conf/message-encoding/encoding
+subject:: /req/message-encoding/encoding
 test-purpose:: Validate that a message encoding is encoding as Protobuf.
 
 [.component,class=test method]

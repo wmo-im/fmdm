@@ -1,7 +1,7 @@
-[[req_data-model-parameter_definition]]
+[[req_message-encoding-parameter_definition]]
 [width="90%",cols="2,6a"]
 |===
-^|*Requirement {counter:req-id}* |*/req/data-model/parameter_definition*
+^|*Requirement {counter:req-id}* |*/req/message-encoding/parameter_definition*
 ^|A |A ParameterDefinition message SHALL define an ``id`` element.
 ^|B |A ParameterDefinition message SHALL define a ``description`` element.
 ^|C |A ParameterDefinition message SHALL define one or more ``parameters`` elements.

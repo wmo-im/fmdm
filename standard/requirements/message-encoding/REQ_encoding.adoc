@@ -1,7 +1,7 @@
-[[req_data-model-encoding]]
+[[req_message-encoding-encoding]]
 [width="90%",cols="2,6a"]
 |===
-^|*Requirement {counter:req-id}* |*/req/data-model/encoding*
+^|*Requirement {counter:req-id}* |*/req/message-encoding/encoding*
 ^|A |A data message SHALL be conformant and validate against the Protobuf schema definition defined in Annex B.
 ^|B |A metadata message SHALL be conformant and validate against the Protobuf schema definition defined in Annex B.
 |===

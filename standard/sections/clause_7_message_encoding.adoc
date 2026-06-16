@@ -1,21 +1,21 @@
-== Data Model
+== Message Encoding
 
-The data model defines the structure and organization of information transmitted from the Node to the Hub using Protocol Buffers (Protobuf) as the Data Format. The data model is formally specified in the protobuf schema firstmile.proto.
+The message encoding defines the structure and organization of information transmitted from the Node to the Hub using Protocol Buffers (Protobuf) as the Data Format. The message encoding is formally specified in the protobuf schema firstmile.proto.
 
-The data model supports two primary use cases:
+The message encoding supports two primary use cases:
 
 - Transmission of observation data: The Node transmits measurement values collected from sensors
 - Transmission of metadata: The Node transmits information about the monitoring site, devices, and parameter definitions
 
 These use cases are supported by two top-level message types: the Data message containing observations, and the Metadata message containing configuration and contextual information. Both messages are defined in a single Protobuf schema and transmitted as independent payloads. The Metadata message provides the necessary context for interpreting the Data message, including descriptions of devices and parameters.
 
-=== Requirements Class "Data Model"
+=== Requirements Class "Message Encoding"
 
 ==== Overview
 
-This Requirements Class provides requirements for the Data Model.
+This Requirements Class provides requirements for the Message Encoding.
 
-The data model organizes information hierarchically as follows:
+The message encoding organizes information hierarchically as follows:
 
 - **Messages**: Top-level containers (Data and Metadata) that are transmitted as independent payloads
 - **Devices**: Descriptions of physical equipment including the Node Device (node) and Observer Devices (sensors)
@@ -25,11 +25,11 @@ The data model organizes information hierarchically as follows:
 
 Each Observation references a ParameterDefinition by identifier. Each ParameterDefinition contains one or more Parameter specifications that describe the measured variable, its unit, temporal aggregation method, and which device performs the measurement.
 
-include::../requirements/requirements_class_data-model.adoc[]
+include::../requirements/requirements_class_message-encoding.adoc[]
 
 ==== Design principles
 
-The data model is designed according to the following principles:
+The message encoding is designed according to the following principles:
 
 - **Efficiency**: Optimized for bandwidth-constrained environments but focusing on IP communication rather than extremely low-level binary formats
 - **Extensibility**: Support for multiple value types and flexible parameter definitions
@@ -42,29 +42,29 @@ The data model is designed according to the following principles:
 
 A FirstMileMessage message denotes whether the content describes data or metadata.
 
-include::../requirements/data-model/REQ_first_mile_message.adoc[]
+include::../requirements/message-encoding/REQ_first_mile_message.adoc[]
 
 ==== Location
 
 The Location message specifies the geographic position of a device (either Node or Observer).
 
-include::../requirements/data-model/REQ_location.adoc[]
-include::../recommendations/data-model/REC_location.adoc[]
-include::../recommendations/data-model/PER_location.adoc[]
+include::../requirements/message-encoding/REQ_location.adoc[]
+include::../recommendations/message-encoding/REC_location.adoc[]
+include::../recommendations/message-encoding/PER_location.adoc[]
 
 ==== Metadata
 
 A Metadata message provides configuration and contextual information about the Node, including descriptions of devices and the parameters they measure. This message shall be transmitted at least once after Node initialization and whenever the configuration changes.
 
-include::../requirements/data-model/REQ_metadata.adoc[]
+include::../requirements/message-encoding/REQ_metadata.adoc[]
 
 ==== Metadata.Node
 
 A Node message describes the Node device itself, typically a datalogger or observation station.
 
-include::../requirements/data-model/REQ_node.adoc[]
-include::../recommendations/data-model/REC_node.adoc[]
-include::../recommendations/data-model/PER_node.adoc[]
+include::../requirements/message-encoding/REQ_node.adoc[]
+include::../recommendations/message-encoding/REC_node.adoc[]
+include::../recommendations/message-encoding/PER_node.adoc[]
 
 ==== Metadata.ObserverDevice
 
@@ -72,9 +72,9 @@ An ObserverDevice message describes an individual sensor or measurement device c
 
 Where a sensor is defined as an ObserverDevice but is not currently connected or is otherwise unavailable, the corresponding parameter values in the Data message is represented using ``emptyValue`` rather than being omitted. This ensures that the Hub can distinguish between a missing sensor reading and the absence of a parameter definition, and that the alignment between values and parameter definitions is maintained.
 
-include::../requirements/data-model/REQ_observer_device.adoc[]
-include::../recommendations/data-model/REC_observer_device.adoc[]
-include::../recommendations/data-model/PER_observer_device.adoc[]
+include::../requirements/message-encoding/REQ_observer_device.adoc[]
+include::../recommendations/message-encoding/REC_observer_device.adoc[]
+include::../recommendations/message-encoding/PER_observer_device.adoc[]
 
 IMPORTANT: Observer device identifiers shall remain stable across Node restarts and metadata updates to ensure consistent parameter-to-device associations.
 
@@ -84,7 +84,7 @@ A ParameterDefinition groups one or more related measurement parameters that sha
 
 The parameters field contains one or more Parameter messages describing individual measurable variables. When multiple parameters are grouped in a single definition, each observation referencing this definition shall provide values in the same order as the parameters are defined.
 
-include::../requirements/data-model/REQ_parameter_definition.adoc[]
+include::../requirements/message-encoding/REQ_parameter_definition.adoc[]
 
 ==== Metadata.ParameterDefinition.Parameter
 
@@ -94,13 +94,13 @@ The standardNames field enables mapping to external naming conventions such as C
 
 The device field specifies which device (either the node or a specific observer) performs this measurement.
 
-include::../requirements/data-model/REQ_parameter.adoc[]
+include::../requirements/message-encoding/REQ_parameter.adoc[]
 
 ==== Metadata.ParameterDefinition.Parameter.DeviceRef
 
 The DeviceRef message associates a parameter with the device that measures it. This message uses a oneof field to reference either the node device or a specific observer device.
 
-include::../requirements/data-model/REQ_device_ref.adoc[]
+include::../requirements/message-encoding/REQ_device_ref.adoc[]
 
 ==== Data
 
@@ -110,13 +110,13 @@ A Data message may contain multiple Observation messages, enabling efficient bat
 
 NOTE: The Node may transmit Data messages containing observations that reference parameter definitions not yet received by the Hub. In this case, the Hub shall buffer or queue such observations until the corresponding `Metadata` message is received.
 
-include::../requirements/data-model/REQ_data.adoc[]
+include::../requirements/message-encoding/REQ_data.adoc[]
 
 ==== Observation
 
 The Observation message represents a single measurement data point collected at a specific time.
 
-include::../requirements/data-model/REQ_observation.adoc[]
+include::../requirements/message-encoding/REQ_observation.adoc[]
 
 NOTE: The ``parameterDefinitionId`` element shall reference a ParameterDefinition ``id`` from the Metadata message. The number and type of values in the values field shall correspond to the number of parameters defined in the referenced ParameterDefinition.
 
@@ -128,7 +128,7 @@ NOTE: An observation may contain multiple values when the referenced ParameterDe
 
 A Value message defines the measurement of data of different types.
 
-include::../requirements/data-model/REQ_value.adoc[]
+include::../requirements/message-encoding/REQ_value.adoc[]
 
 The choice of value type should be appropriate for the parameter being measured. Numeric measurements typically use doubleValue or floatValue, while categorical observations may use stringValue. Boolean parameters (such as alarm states) use boolValue.
 

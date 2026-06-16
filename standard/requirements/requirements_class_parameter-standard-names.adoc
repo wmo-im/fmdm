@@ -4,5 +4,5 @@
 2+|*Requirements Class*
 2+|http://wis.wmo.int/spec/fmdm/1/req/parameter-standard-names
 |Target type |Message encoding
-|Dependency |<<rc_data-model, Data Model>>
+|Dependency |<<rc_message-encoding, Message Encoding>>
 |===

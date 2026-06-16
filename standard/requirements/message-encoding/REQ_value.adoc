@@ -1,7 +1,7 @@
-[[req_data-model-value]]
+[[req_message-encoding-value]]
 [width="90%",cols="2,6a"]
 |===
-^|*Requirement {counter:req-id}* |*/req/data-model/value*
+^|*Requirement {counter:req-id}* |*/req/message-encoding/value*
 ^|A |
 
 A Value message SHALL be defined using one of the following data types:

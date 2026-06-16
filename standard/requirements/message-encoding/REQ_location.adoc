@@ -1,7 +1,7 @@
-[[req_data-model-location]]
+[[req_message-encoding-location]]
 [width="90%",cols="2,6a"]
 |===
-^|*Requirement {counter:req-id}* |*/req/data-model/location*
+^|*Requirement {counter:req-id}* |*/req/message-encoding/location*
 ^|A |A Location message SHALL define a ``heightMetres`` element in metres, above the ``referenceSurface``.
 ^|B |A Location message SHALL define a ``referenceSurface`` element using the ReferenceSurface enumeration defined in Annex B.
 |===

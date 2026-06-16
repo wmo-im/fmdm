@@ -1,10 +1,10 @@
-[[req_data-model-parameter]]
+[[req_message-encoding-parameter]]
 [width="90%",cols="2,6a"]
 |===
-^|*Requirement {counter:req-id}* |*/req/data-model/parameter*
+^|*Requirement {counter:req-id}* |*/req/message-encoding/parameter*
 ^|A |A Parameter message SHALL define a ``longName`` element describing the name of the parameter (e.g., "Air Temperature", "Wind Speed").
 ^|B |A Parameter message SHALL define a ``unit`` element using the https://codes.wmo.int/common/unit[WMO Register: Code Table C-6: List of units for TDCFs]. // TODO verify
-^|C |A Parameter message SHALL define a ``standardNames`` map which describes zero or more namespace prefix and standard name mappings for the equivalent parameter name in an external vocabulary. // TODO: was "one or more"; changed to "zero or more" to align with /per/data-model/standard_name_binding_assignment Part A
+^|C |A Parameter message SHALL define a ``standardNames`` map which describes zero or more namespace prefix and standard name mappings for the equivalent parameter name in an external vocabulary. // TODO: was "one or more"; changed to "zero or more" to align with /per/message-encoding/standard_name_binding_assignment Part A
 ^|D |A Parameter message SHALL define a ``device`` element describing the device (Node or Observer) that measures this parameter.
 ^|E |A Parameter message SHALL define a ``cellMethod`` element describing the statistical or aggregation method applied to the measurement.
 ^|F |A Parameter message SHALL define a ``cellPeriodSeconds`` element describing the period of aggregation in seconds (0 for instantaneous point measurements).

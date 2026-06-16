@@ -1,7 +1,7 @@
-[[req_data-model-observer_device]]
+[[req_message-encoding-observer_device]]
 [width="90%",cols="2,6a"]
 |===
-^|*Requirement {counter:req-id}* |*/req/data-model/observer_device*
+^|*Requirement {counter:req-id}* |*/req/message-encoding/observer_device*
 ^|A |An ObserverDevice message SHALL define an ``id`` element.
 ^|B |An ObserverDevice message SHALL define a ``name`` element to describe the name or model designation of the observer device.
 |===

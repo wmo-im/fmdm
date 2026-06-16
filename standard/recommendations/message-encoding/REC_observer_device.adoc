@@ -1,6 +1,6 @@
-[[rec_data-model-observer_device]]
+[[rec_message-encoding-observer_device]]
 [width="90%",cols="2,6a"]
 |===
-^|*Recommendation {counter:rec-id}* |*/rec/data-model/observer_device*
+^|*Recommendation {counter:rec-id}* |*/rec/message-encoding/observer_device*
 ^|A |An ObserverDevice message SHOULD define a ``location`` element describing the geographic location of the observer device.
 |===

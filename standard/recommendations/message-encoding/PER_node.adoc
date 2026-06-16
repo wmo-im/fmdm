@@ -1,7 +1,7 @@
-[[per_data-model-node]]
+[[per_message-encoding-node]]
 [width="90%",cols="2,6a"]
 |===
-^|*Permission {counter:per-id}* |*/per/data-model/node*
+^|*Permission {counter:per-id}* |*/per/message-encoding/node*
 ^|A |A Node message MAY define a ``url`` element providing a URI reference to additional metadata about the device.
 ^|B |A Node message MAY define a ``serialNumber`` element describing the manufacturer's serial number of the device.
 ^|C |A Node message MAY define a ``firmwareVersion`` element describing the firmware version of the device, typically in format such as ``5.1`` or ``2.7.1-alpha``.

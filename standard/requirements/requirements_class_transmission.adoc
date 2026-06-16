@@ -4,5 +4,5 @@
 2+|*Requirements Class*
 2+|http://wis.wmo.int/spec/fmdm/1/req/transmission
 |Target type |Transmission
-|Dependency |<<rc_data-model>>
+|Dependency |<<rc_message-encoding, Message Encoding>>
 |===

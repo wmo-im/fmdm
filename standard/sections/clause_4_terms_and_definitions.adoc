@@ -53,7 +53,7 @@ Declaration that associates a short key with a URI identifying an external namin
 
 === Node device
 
-The primary device within a Node, typically a datalogger or observation station controller, responsible for acquiring data from Observer Devices and transmitting encoded payloads to the Hub. Described by the `Node` message in the data model.
+The primary device within a Node, typically a datalogger or observation station controller, responsible for acquiring data from Observer Devices and transmitting encoded payloads to the Hub. Described by the `Node` message in the message encoding.
 
 === Observer device
 

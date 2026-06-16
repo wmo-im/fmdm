@@ -2,9 +2,9 @@
 :appendix-caption: Annex
 == Conformance Class Abstract Test Suite (Normative)
 
-=== Conformance Class: Data Model
+=== Conformance Class: Message Encoding
 
-include::../abstract_tests/ATS_class_data-model.adoc[]
+include::../abstract_tests/ATS_class_message-encoding.adoc[]
 
 === Conformance Class: Protocol
 

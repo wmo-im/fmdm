@@ -8,6 +8,6 @@ This standard identifies numerous Requirements Classes which define the function
 
 The mandatory Requirements Classes for this specification are:
 
-* "Data Model"
+* "Message Encoding"
 * "Parameter Standard Names"
-* "Protocol"
+* "Transmission"

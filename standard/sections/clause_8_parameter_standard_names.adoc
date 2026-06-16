@@ -8,7 +8,7 @@ Standard name binding enables Parameter definitions within a Metadata message to
 
 This Requirements Class provides requirements for Parameter Standard Names.
 
-The binding mechanism uses two related fields in the data model:
+The binding mechanism uses two related fields in the message encoding:
 
 - Metadata namespaces: declares the naming convention vocabularies in use, associating a short namespace key with a URI that identifies the vocabulary
 - Parameter standardNames: associates each namespace key with the corresponding standard name for the parameter within that vocabulary

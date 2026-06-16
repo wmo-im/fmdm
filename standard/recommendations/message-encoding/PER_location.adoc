@@ -1,6 +1,6 @@
-[[per_data-model-location]]
+[[per_message-encoding-location]]
 [width="90%",cols="2,6a"]
 |===
-^|*Permission {counter:per-id}* |*/per/data-model/location*
+^|*Permission {counter:per-id}* |*/per/message-encoding/location*
 ^|A |A Location message MAY omit the ``latitude`` and ``longitude`` elements when they are unknown.
 |===

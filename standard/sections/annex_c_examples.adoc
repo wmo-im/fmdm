@@ -7,14 +7,14 @@
 
 === Data and metadata messages
 
-Each example below is a complete `FirstMileMessage`, with the `metadata` or `data` oneof field populated as appropriate.
+Each example below is a complete FirstMileMessage, with one of the `metadata` or `data` elements populated as appropriate.
 
 ==== Hydrological station
 
 This example simulates a simple hydrological gauging station.
 
-* *Node:* the node/datalogger purely acts as a gateway, does not provide any internal diagnostics or measurements, and the metadata does not contain any specific information about the node device.
-* *Observers:* Geolux Radar (water level) and OTT Pluvio² (rainfall).
+* Node: the node/datalogger purely acts as a gateway, does not provide any internal diagnostics or measurements, and the metadata does not contain any specific information about the node device.
+* Observers: Geolux Radar (water level) and OTT Pluvio² (rainfall).
 
 Key points:
 
@@ -39,8 +39,8 @@ include::../../examples/hydrostation/data.json[]
 
 This example shows a typical automatic weather station located in central Europe.
 
-* *Node:* Campbell CR3000 recording weather data plus internal system status.
-* *Observers:* Vaisala WXT536 measuring meteorological parameters.
+* Node: Campbell CR3000 recording weather data plus internal system status.
+* Observers: Vaisala WXT536 measuring meteorological parameters.
 
 Key points:
 

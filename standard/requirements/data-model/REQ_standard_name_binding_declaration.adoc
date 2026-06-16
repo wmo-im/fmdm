@@ -2,10 +2,10 @@
 [width="90%",cols="2,6a"]
 |===
 ^|*Requirement {counter:req-id}* |*/req/data-model/standard_name_binding_declaration*
-^|A |The Metadata message namespace element SHALL define zero or more namespace maps.
+^|A |The Metadata message ``namespaces`` element SHALL define zero or more namespace maps.
 ^|B |Each namespace map SHALL consist of a namespace prefix and URI.
 ^|C |A namespace map prefix SHALL be a non-empty string containing only alphanumeric characters and underscores.
-^|D |A namespace map URI shall be a resolvable, publicly accessible URI that can be deferenced.
+^|D |A namespace map URI SHALL be a resolvable, publicly accessible URI that can be dereferenced.
 ^|E |The CF namespace prefix SHALL be declared using the value ``cf``.
 ^|F |The CF namespace URI value SHALL be a URI that resolves to a machine-readable vocabulary server endpoint publishing the CF standard name table.
 |===

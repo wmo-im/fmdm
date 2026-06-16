@@ -5,5 +5,5 @@
 ^|A | A Metadata message SHALL define a ``node`` element to describe the Node device (datalogger or station).
 ^|B | A Metadata message SHALL define zero or more ``observers`` to describe individual sensor devices connected to the Node.
 ^|C | A Metadata message SHALL define one or more ``parameterDefinitions`` to define the parameters used in observations.
-^|D | A Metadata message SHALL define a ``namespace`` element to define a mapping of namespace prefixes to their corresponding URIs for standard name resolution.
+^|D | A Metadata message SHALL define a ``namespaces`` element to define a mapping of namespace prefixes to their corresponding URIs for standard name resolution.
 |===

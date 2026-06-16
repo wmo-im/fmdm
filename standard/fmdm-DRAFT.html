@@ -469,20 +469,23 @@ body {
 <div class="paragraph">
 <p>In February 2024, a WMO workshop in Geneva brought together representatives from WMO and the Hydro-Meteorological and Environmental Industry (HMEI) to address the lack of standardization in first-mile data collection. While international data exchange is standardized through WMO, no equivalent standardization exists for the first-mile segment, the connection between field equipment and centralized data collection systems, leading to a proliferation of incompatible proprietary formats and significant integration effort for operators of observing networks. The workshop recommended focusing first on output interoperability, and the Standing Committee on Information Management and Technology (SC-IMT) subsequently established the Task Team on First-mile Data Collection Standardization (TT-1M) to produce this specification.</p>
 </div>
-<div class="paragraph">
-<p>[TODO] Add data flow figure showing 1st mile, DCPS and WIS2.</p>
+<div id="fig-node-data-flow" class="imageblock">
+<div class="content">
+<img src="images/firstmile-data-flow.png" alt="Data Flow">
+</div>
+<div class="title">Figure 1. Data Flow</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_solution_overview"><a class="anchor" href="#_solution_overview"></a>6.2. Solution overview</h3>
 <div class="paragraph">
-<p>The first-mile segment covers the connection between field equipment and the systems that collect and process observations. In this specification, the field equipment is represented as the Node and the receiving system as the Hub. Communication is strictly unidirectional, with the Node transmitting Protobuf payloads over MQTT to the Hub. The Node represents the remote station or logger through a Node Device and may describe attached sensors as Observer Device entries, as illustrated in <a href="#fig-node-hub">Figure 1</a>. The two top-level payloads are the Data message, which carries Observation content, and the Metadata message, which carries the descriptive context needed to interpret those observations.</p>
+<p>The first-mile segment covers the connection between field equipment and the systems that collect and process observations. In this specification, the field equipment is represented as the Node and the receiving system as the Hub. Communication is strictly unidirectional, with the Node transmitting Protobuf payloads over MQTT to the Hub. The Node represents the remote station or logger through a Node Device and may describe attached sensors as Observer Device entries, as illustrated in <a href="#fig-node-hub">Figure 2</a>. The two top-level payloads are the Data message, which carries Observation content, and the Metadata message, which carries the descriptive context needed to interpret those observations.</p>
 </div>
 <div id="fig-node-hub" class="imageblock">
 <div class="content">
 <img src="images/firstmile-archi.png" alt="Node and Hub architecture">
 </div>
-<div class="title">Figure 1. Node and Hub architecture</div>
+<div class="title">Figure 2. Node and Hub architecture</div>
 </div>
 <div class="sect3">
 <h4 id="_message_flow"><a class="anchor" href="#_message_flow"></a>6.2.1. Message flow</h4>
@@ -2400,7 +2403,7 @@ Schema documents will only be published on <code>schemas.wmo.int</code> once the
 <div class="content">
 <pre class="highlight"><code class="language-yaml" data-lang="yaml">syntax = "proto3";
 
-package int.wmo.wis.spec.fmdm.1.conf.message_encoding;
+package int.wmo.wis.spec.fmdm.v1.conf.message_encoding;
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
@@ -2486,11 +2489,11 @@ message Location {
 
 message Node {
   string id = 1;
-  string name = 1;
-  optional Location location = 2;
-  optional string url = 3;
-  optional string serialNumber = 4;
-  optional string firmwareVersion = 5;
+  string name = 2;
+  optional Location location = 3;
+  optional string url = 4;
+  optional string serialNumber = 5;
+  optional string firmwareVersion = 6;
 }
 
 message ObserverDevice {
@@ -3152,7 +3155,7 @@ The choice of reference surface is determined by the user based on the measureme
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-06-16 18:44:54 UTC
+Last updated 2026-06-16 19:54:27 UTC
 </div>
 </div>
 </body>

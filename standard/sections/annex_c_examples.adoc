@@ -6,3 +6,57 @@
 === Transmission topics
 
 === Data and metadata messages
+
+Each example below is a complete FirstMileMessage, with one of the `metadata` or `data` elements populated as appropriate.
+
+==== Hydrological station
+
+This example simulates a simple hydrological gauging station.
+
+* Node: the node/datalogger purely acts as a gateway, does not provide any internal diagnostics or measurements, and the metadata does not contain any specific information about the node device.
+* Observers: Geolux Radar (water level) and OTT Pluvio² (rainfall).
+
+Key points:
+
+* Measures critical hydrological parameters: water level and rainfall intensity.
+* Data is grouped under a single parameter definition since all values represent hydrological measurements.
+* Metadata is minimal — there is no firmware version or serial number information from the observer instruments.
+* The sample data payload contains three measurements taken 10 minutes apart.
+
+.FirstMileMessage (metadata)
+[source,json]
+----
+include::../../examples/hydrostation/metadata.json[]
+----
+
+.FirstMileMessage (data)
+[source,json]
+----
+include::../../examples/hydrostation/data.json[]
+----
+
+==== Meteorological station
+
+This example shows a typical automatic weather station located in central Europe.
+
+* Node: Campbell CR3000 recording weather data plus internal system status.
+* Observers: Vaisala WXT536 measuring meteorological parameters.
+
+Key points:
+
+* Weather parameters: air temperature, humidity, pressure, wind, rainfall.
+* The datalogger monitors battery voltage, solar input, and logger temperature.
+* The data block groups meteorological parameters and logger health separately.
+* This example sends an empty value for the barometric pressure measurement, which indicates that the corresponding sensor did not successfully provide a reading. This may indicate a sensor fault, and the receiver must skip this value.
+
+.FirstMileMessage (metadata)
+[source,json]
+----
+include::../../examples/meteostation/metadata.json[]
+----
+
+.FirstMileMessage (data)
+[source,json]
+----
+include::../../examples/meteostation/data.json[]
+----

@@ -12,7 +12,7 @@ The first-mile segment covers the connection between field equipment and the sys
 
 [[fig-node-hub]]
 .Node and Hub architecture
-image::../images/firstmile-archi.drawio.png[Node and Hub architecture]
+image::../images/firstmile-archi.png[Node and Hub architecture]
 
 ==== Message flow
 

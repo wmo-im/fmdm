@@ -24,15 +24,15 @@ Key points:
 * The sample data payload contains three measurements taken 10 minutes apart.
 
 .FirstMileMessage (metadata)
-[source,json]
+[source,protobuf]
 ----
-include::../../examples/hydrostation/metadata.json[]
+include::../../examples/hydrostation/metadata.textproto[]
 ----
 
 .FirstMileMessage (data)
-[source,json]
+[source,protobuf]
 ----
-include::../../examples/hydrostation/data.json[]
+include::../../examples/hydrostation/data.textproto[]
 ----
 
 ==== Meteorological station
@@ -50,13 +50,13 @@ Key points:
 * This example sends an empty value for the barometric pressure measurement, which indicates that the corresponding sensor did not successfully provide a reading. This may indicate a sensor fault, and the receiver must skip this value.
 
 .FirstMileMessage (metadata)
-[source,json]
+[source,protobuf]
 ----
-include::../../examples/meteostation/metadata.json[]
+include::../../examples/meteostation/metadata.textproto[]
 ----
 
 .FirstMileMessage (data)
-[source,json]
+[source,protobuf]
 ----
-include::../../examples/meteostation/data.json[]
+include::../../examples/meteostation/data.textproto[]
 ----

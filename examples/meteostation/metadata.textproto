@@ -1,0 +1,139 @@
+metadata {
+  node {
+    name: "Campbell CR3000 Datalogger"
+    serialNumber: "CR3K-2025-99384"
+    location {
+      latitude: 44.90192
+      longitude: 15.60844
+      heightMetres: 1.5
+      referenceSurface: GL
+    }
+    firmwareVersion: "OS25.04"
+  }
+  observers {
+    id: 1
+    name: "Vaisala WXT536 Weather Transmitter"
+    serialNumber: "WX536-3482934"
+    location {
+      latitude: 44.90192
+      longitude: 15.60844
+      heightMetres: 2.0
+      referenceSurface: GL
+    }
+    firmwareVersion: "3.12"
+  }
+  parameterDefinitions {
+    id: 1
+    description: "Weather parameters"
+    parameters {
+      longName: "Air Temperature"
+      unit: "°C"
+      device {
+        observerId: 1
+      }
+      cellMethod: POINT
+      standardNames {
+        key: "cf"
+        value: "air_temperature"
+      }
+    }
+    parameters {
+      longName: "Relative Humidity"
+      unit: "%"
+      device {
+        observerId: 1
+      }
+      cellMethod: POINT
+      standardNames {
+        key: "cf"
+        value: "relative_humidity"
+      }
+    }
+    parameters {
+      longName: "Barometric Pressure"
+      unit: "hPa"
+      device {
+        observerId: 1
+      }
+      cellMethod: POINT
+      standardNames {
+        key: "cf"
+        value: "air_pressure"
+      }
+    }
+    parameters {
+      longName: "Wind Speed (10min mean)"
+      unit: "m/s"
+      device {
+        observerId: 1
+      }
+      cellMethod: MEAN
+      cellPeriodSeconds: 600
+      standardNames {
+        key: "cf"
+        value: "wind_speed"
+      }
+    }
+    parameters {
+      longName: "Wind Direction (10min mean)"
+      unit: "°"
+      device {
+        observerId: 1
+      }
+      cellMethod: MEAN
+      cellPeriodSeconds: 600
+      standardNames {
+        key: "cf"
+        value: "wind_from_direction"
+      }
+    }
+    parameters {
+      longName: "Precipitation"
+      unit: "mm"
+      device {
+        observerId: 1
+      }
+      cellMethod: SUM
+      cellPeriodSeconds: 600
+      standardNames {
+        key: "cf"
+        value: "precipitation_amount"
+      }
+    }
+  }
+  parameterDefinitions {
+    id: 2
+    description: "Internal logger parameters"
+    parameters {
+      longName: "Battery Voltage"
+      unit: "V"
+      device {
+        node {}
+      }
+      cellMethod: POINT
+      cellPeriodSeconds: 0
+    }
+    parameters {
+      longName: "Solar Panel Voltage"
+      unit: "V"
+      device {
+        node {}
+      }
+      cellMethod: POINT
+      cellPeriodSeconds: 0
+    }
+    parameters {
+      longName: "Internal Logger Temperature"
+      unit: "°C"
+      device {
+        node {}
+      }
+      cellMethod: POINT
+      cellPeriodSeconds: 0
+    }
+  }
+  namespaces {
+    key: "cf"
+    value: "https://vocab.nerc.ac.uk/standard_name/"
+  }
+}

@@ -1,0 +1,23 @@
+data {
+  observations {
+    parameterDefinitionId: 1
+    time {
+      seconds: 1755766200
+    }
+    values { doubleValue: 18.6 }
+    values { doubleValue: 72.3 }
+    values { emptyValue {} }
+    values { doubleValue: 3.4 }
+    values { doubleValue: 215.0 }
+    values { doubleValue: 0.4 }
+  }
+  observations {
+    parameterDefinitionId: 2
+    time {
+      seconds: 1755766200
+    }
+    values { doubleValue: 12.4 }
+    values { doubleValue: 17.6 }
+    values { doubleValue: 29.3 }
+  }
+}

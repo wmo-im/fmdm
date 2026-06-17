@@ -32,7 +32,7 @@ jobs:
     - name: Generate Python code
       run: |
         protoc -I . --python_out=. schemas/first-mile-message-encoding.proto 
-        mv first_mile_message_encoding_pb2 scripts
+        mv first_mile_message_encoding_pb2 scripts.py
     - name: Run validation
       run: |
         set +e
